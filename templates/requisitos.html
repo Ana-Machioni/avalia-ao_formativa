@@ -141,7 +141,8 @@
                 </tr>
             </thead>
             <tbody id="listaRequisitos">
-                <!-- Requisitos serão adicionados-->
+                <!-- Requisitos serão adicionados--> 
+                 <!-- primeiro jinja p requisito -->
                 {% for  requisito in requisitos %}
                 <tr>
                     <td>{{requisito.descricao}}</td>
@@ -149,15 +150,19 @@
                     <td>{{requisito.valor}}</td>
                     <td>{{requisito.situacao}}</td>
                     <td class="acao-buttons">
+                        <!-- botao pendente/resolvido  -->
                         <button style="background-color: rgba(180, 50, 50, 0.868);"><a href="/requisitos/delete/{{requisito.cod_requisito}}">Deletar</a></button>
                         {% if requisito.situacao == "Pendente" %}
-                        <a href="/requisitos/status/{{requisito.cod_requisito}}/Resolvido"><button style="background-color: rgb(2, 109, 66);">Marcar como Resolvido</button></a>
+                        <a href="/requisitos/status/{{requisito.cod_requisito}}/Resolvido"><button style="background-color: rgb(2, 109, 66);">Marcar como Resolvido</button>
+                        </a>
                         {% else  %}
-                        <a href=""></a><button style="background-color: rgb(45, 2, 109);">Marcar como Pendente</button>
+                        <a href="/requisitos/status/{{requisito.cod_requisito}}/Pendente"></a><button style="background-color: rgb(45, 2, 109);">Marcar como Pendente</button>
                         {% endif %}
+                        <!-- botao pendente/resolvido -->
                     </td>
                 </tr>
                 {% endfor %}
+                <!-- primeiro jinja p requisito -->
             </tbody>
         </table>
     </section>

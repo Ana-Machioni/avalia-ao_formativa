@@ -33,7 +33,7 @@ def excluir_descricao(cod_requisitos:int) -> bool:
                        
         """,
         [cod_requisitos])
-        conexao.commit()
+        conexao.commit() 
 
         conexao.close()
 
@@ -45,7 +45,7 @@ def excluir_descricao(cod_requisitos:int) -> bool:
     
 
 
-    
+# atualizar 
 def update(cod_requisitos, situacao):
     conexao, cursor = conectar()
 

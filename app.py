@@ -18,6 +18,8 @@ def pag_requisitos():
     requisitos = recuperar_requisitos()
     return render_template("requisitos.html", requisitos = requisitos )
 
+# botao de marcar como resolvido/pendente
+
 @app.route("/cadastrar", methods = ["POST"])
 def pag_cadastrar():
     descricao = request.form.get("descricao")
