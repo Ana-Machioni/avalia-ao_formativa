@@ -113,17 +113,17 @@
         <!-- Formulário para cadastrar requisitos -->
         <form action="/cadastrar" method="post">
             <label for="descricao">Descrição:</label>
-            <input type="text" id="descricao">
+            <input type="text" id="descricao" name="descricao">
 
             <label for="nivel">Nível:</label>
-            <select id="nivel" >
+            <select id="nivel" name="nivel">
                 <option value="Básico">Básico</option>
                 <option value="Intermediário">Intermediário</option>
                 <option value="Avançado">Avançado</option>
             </select>
 
             <label for="valor">Valor:</label>
-            <input type="text" id="valor">
+            <input type="text" id="valor" name="valor">
 
             <button type="submit">Cadastrar</button>
         </form>
@@ -144,14 +144,17 @@
                 <!-- Requisitos serão adicionados-->
                 {% for  requisito in requisitos %}
                 <tr>
-                    <td>Exemplo de requisito</td>
-                    <td>Básico</td>
-                    <td>16</td>
-                    <td>Resolvido</td>
+                    <td>{{requisito.descricao}}</td>
+                    <td>{{requisito.nivel}}</td>
+                    <td>{{requisito.valor}}</td>
+                    <td>{{requisito.situacao}}</td>
                     <td class="acao-buttons">
-                        <button style="background-color: rgba(180, 50, 50, 0.868);">Deletar</button>
-                        <button style="background-color: rgb(2, 109, 66);">Marcar como Resolvido</button>
-                        <button style="background-color: rgb(45, 2, 109);">Marcar como Pendente</button>
+                        <button style="background-color: rgba(180, 50, 50, 0.868);"><a href="/requisitos/delete/{{requisito.cod_requisito}}">Deletar</a></button>
+                        {% if requisito.situacao == "Pendente" %}
+                        <a href="/requisitos/status/{{requisito.cod_requisito}}/Resolvido"><button style="background-color: rgb(2, 109, 66);">Marcar como Resolvido</button></a>
+                        {% else  %}
+                        <a href=""></a><button style="background-color: rgb(45, 2, 109);">Marcar como Pendente</button>
+                        {% endif %}
                     </td>
                 </tr>
                 {% endfor %}
